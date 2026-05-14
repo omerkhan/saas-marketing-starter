@@ -1,0 +1,12 @@
+{
+  "setup_complete": false,
+  "product": {
+    "name": "",
+    "what_it_does": ""
+  },
+  "team": null,
+  "founder_email": "",
+  "_meta": {
+    "note": "Filled in once by the 'setup' skill on the first Claude Code session. After setup, this file is a record of the initial configuration. To re-run setup, set setup_complete to false and start a new Claude session."
+  }
+}

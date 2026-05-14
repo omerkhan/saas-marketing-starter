@@ -1,6 +1,6 @@
 # SaaS Marketing Site Starter
 
-A 3-page marketing site for B2B SaaS founders. Built with Astro and Tailwind. Edited with Claude Code. Deployed on Vercel. Zero local setup required.
+A marketing site for B2B SaaS founders, with home, pricing, about, and a working request-a-demo page (plus legal page placeholders). Built with Astro and Tailwind. Edited with Claude Code. Deployed on Vercel. Zero local setup required.
 
 ## Quickstart (5 minutes)
 
@@ -19,12 +19,16 @@ Click the button above. Vercel will ask you to sign in with GitHub (free), pick 
 1. Go to [claude.ai/code](https://claude.ai/code) (requires Claude Pro or Max).
 2. Connect your GitHub account (one time).
 3. Select your new repo.
-4. Type what you want changed. Examples:
-   - *"Change the company name from Loop to Acme. Update the hero headline to 'Customer support that doesn't suck.'"*
+
+**On your first session, Claude will greet you and ask 4 short questions** — your product name, what it does, who's on your team, and where demo form submissions should go. Answer them and Claude opens a PR renaming "Loop" to your product across the site. Merge the PR and Vercel redeploys with your branding.
+
+After that, type what you want changed. Examples:
+   - *"Change the hero headline to 'Customer support that doesn't suck.'"*
    - *"Replace the pricing tiers with $29 Starter, $99 Pro, and Custom Enterprise."*
    - *"Add a new section after the hero showing 4 customer logos."*
-   - *"Change the accent color from indigo to emerald."*
-5. Claude opens a Pull Request on GitHub. Click **"Merge pull request"**. Vercel redeploys automatically.
+   - *"Change the accent color from black to emerald."*
+
+Each request becomes a Pull Request on GitHub. Click **"Merge pull request"**. Vercel redeploys automatically.
 
 That's it. Your site is now custom.
 

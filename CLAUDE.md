@@ -1,5 +1,13 @@
 # Working on this site with Claude Code
 
+## First-time setup (auto-runs on a fresh clone)
+
+If `.claude/setup.json` shows `"setup_complete": false`, the SessionStart hook will surface a `[FIRST-TIME SETUP REQUIRED]` system reminder at the top of the session. When you see that nudge, invoke the `setup` skill (at `.claude/skills/setup/SKILL.md`) before responding to anything else. It walks the founder through 4 short questions and renames Loop to their product across the right files.
+
+The founder does not need to know any magic phrase — the hook handles the discovery.
+
+If a founder explicitly skips setup, flip `setup_complete` to `true` in `.claude/setup.json` so the nudge stops appearing. They can re-run setup later by flipping it back to `false`.
+
 ## About this project
 
 This is a marketing site starter for non-technical SaaS founders. The person you're talking to is most likely **non-technical**. They will describe changes in plain English ("change the headline," "make the buttons green," "add a customer logos section"). Translate that into code edits. Don't ask them for technical specifics — make a reasonable call and explain what you decided.
