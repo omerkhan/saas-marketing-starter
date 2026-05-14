@@ -1,0 +1,42 @@
+---
+interface Props {
+  quote?: string;
+  name?: string;
+  title?: string;
+  company?: string;
+}
+
+const {
+  quote = "We were losing 45 minutes every morning to a standup that nobody enjoyed. Two weeks after switching to Loop, the team got that time back and our cycle time dropped 18%. Nobody has asked to bring the meeting back.",
+  name = 'Sarah Whitfield',
+  title = 'VP of Engineering',
+  company = 'Northwave',
+} = Astro.props;
+
+const initials = name
+  .split(' ')
+  .map((n) => n[0])
+  .join('')
+  .slice(0, 2);
+---
+<section class="bg-white">
+  <div class="mx-auto max-w-4xl px-6 py-20 md:py-24">
+    <figure>
+      <svg width="40" height="32" viewBox="0 0 40 32" fill="currentColor" class="text-zinc-300" aria-hidden="true">
+        <path d="M0 32V20c0-7 4-13 12-16l3 5c-5 2-8 6-8 11h5v12H0zm22 0V20c0-7 4-13 12-16l3 5c-5 2-8 6-8 11h5v12H22z"/>
+      </svg>
+      <blockquote class="mt-6 text-2xl md:text-3xl font-medium text-zinc-950 leading-snug tracking-tight">
+        "{quote}"
+      </blockquote>
+      <figcaption class="mt-8 flex items-center gap-4">
+        <div class="h-12 w-12 rounded-full bg-zinc-100 flex items-center justify-center text-sm font-semibold text-zinc-700">
+          {initials}
+        </div>
+        <div>
+          <div class="font-medium text-zinc-950">{name}</div>
+          <div class="text-sm text-zinc-600">{title}, {company}</div>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>

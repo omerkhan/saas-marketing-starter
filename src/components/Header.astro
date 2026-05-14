@@ -1,0 +1,83 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/about', label: 'About' },
+];
+
+const path = Astro.url.pathname;
+---
+<header
+  id="site-header"
+  class="sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-shadow"
+>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-zinc-950">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#0a0a0a" />
+          <path
+            d="M10 11.5a5.5 5.5 0 1 0 11 0v9a5.5 5.5 0 1 1-11 0"
+            stroke="white"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            fill="none"
+          />
+        </svg>
+        <span class="text-lg font-semibold tracking-tight">Loop</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8" aria-label="Primary">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`text-sm font-medium transition-colors ${
+                path === item.href
+                  ? 'text-zinc-950'
+                  : 'text-zinc-600 hover:text-zinc-950'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="#"
+          class="hidden sm:inline text-sm font-medium text-zinc-600 hover:text-zinc-950 transition-colors"
+        >
+          Sign in
+        </a>
+        <a
+          href="#"
+          class="inline-flex items-center rounded-md bg-zinc-950 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-zinc-800 transition-colors"
+        >
+          Start free trial
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #site-header.scrolled {
+      border-bottom: 1px solid rgb(228 228 231);
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const header = document.getElementById('site-header');
+      if (!header) return;
+      const onScroll = () => {
+        if (window.scrollY > 10) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</header>

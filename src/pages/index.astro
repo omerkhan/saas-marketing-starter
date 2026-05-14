@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import FeatureSplit from '../components/FeatureSplit.astro';
+import Testimonial from '../components/Testimonial.astro';
+import CTA from '../components/CTA.astro';
+---
+<BaseLayout>
+  <Hero />
+
+  <FeatureGrid />
+
+  <FeatureSplit
+    heading="Where your team already looks."
+    description="Loop posts to Slack and reads from GitHub, Linear, and Notion. Your team writes one update and everyone who needs it sees it in the place they already check ten times a day."
+    bullets={[
+      "Pulls in yesterday's GitHub commits and Linear tickets so people don't retype them",
+      'Threaded follow-ups stay in Slack instead of a separate tool nobody opens',
+      'One-click jump to a video call when something actually needs a real-time conversation',
+    ]}
+    bulletsSide="right"
+  />
+
+  <FeatureSplit
+    heading="Spot stalled work before it becomes a problem."
+    description="The summary view managers actually open. Loop highlights work that has not moved in a week and blockers that keep showing up, so the pattern is obvious before anyone has to ask."
+    bullets={[
+      'Weekly recap auto-shared with leadership',
+      'Filter by team, project, or person',
+      'Export to CSV when finance asks for the numbers',
+    ]}
+    bulletsSide="left"
+  />
+
+  <Testimonial />
+
+  <CTA />
+</BaseLayout>

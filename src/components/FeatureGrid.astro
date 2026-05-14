@@ -1,0 +1,48 @@
+---
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  heading?: string;
+  subhead?: string;
+  features?: Feature[];
+}
+
+const {
+  heading = "Most standups don't need to be meetings.",
+  subhead = 'The cost of a daily 15-minute meeting is rarely the 15 minutes. It is the context-switch on either side. Loop removes the meeting and keeps the visibility.',
+  features = [
+    {
+      title: 'Write once, everyone reads when they are ready.',
+      description:
+        "Post your update on your own schedule. Loop bundles the team's updates into a digest and drops it in Slack at a time you agree on. Quiet mornings stop being a luxury.",
+    },
+    {
+      title: 'Blockers find the right person.',
+      description:
+        "When someone marks themselves stuck, Loop pings the teammate who can unblock them. Nothing sits in a channel hoping somebody scrolls back far enough to notice.",
+    },
+  ],
+} = Astro.props;
+---
+<section class="bg-zinc-50">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-24">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-950">{heading}</h2>
+      <p class="mt-4 text-lg text-zinc-600 leading-relaxed">{subhead}</p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+      {
+        features.map((feature) => (
+          <div>
+            <h3 class="text-xl font-semibold text-zinc-950">{feature.title}</h3>
+            <p class="mt-3 text-zinc-600 leading-relaxed">{feature.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

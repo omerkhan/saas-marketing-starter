@@ -1,0 +1,131 @@
+---
+// DemoForm posts to /api/demo. With JS, it submits as JSON and shows inline success.
+// Without JS, the browser submits as a standard form POST and the API redirects to /demo?ok=1.
+---
+<form
+  id="demo-form"
+  action="/api/demo"
+  method="POST"
+  class="space-y-5"
+  novalidate
+>
+  <div>
+    <label for="name" class="block text-sm font-medium text-zinc-950">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      autocomplete="name"
+      class="mt-1.5 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 placeholder:text-zinc-400 focus:border-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950/20"
+    />
+  </div>
+
+  <div>
+    <label for="email" class="block text-sm font-medium text-zinc-950">Work email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      autocomplete="email"
+      class="mt-1.5 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 placeholder:text-zinc-400 focus:border-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950/20"
+    />
+  </div>
+
+  <div>
+    <label for="company" class="block text-sm font-medium text-zinc-950">Company</label>
+    <input
+      type="text"
+      id="company"
+      name="company"
+      required
+      autocomplete="organization"
+      class="mt-1.5 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 placeholder:text-zinc-400 focus:border-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950/20"
+    />
+  </div>
+
+  <div>
+    <label for="message" class="block text-sm font-medium text-zinc-950">
+      What problem are you trying to solve?
+      <span class="font-normal text-zinc-500">(optional)</span>
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      rows="4"
+      class="mt-1.5 block w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-950 placeholder:text-zinc-400 focus:border-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950/20"
+    ></textarea>
+  </div>
+
+  <div aria-hidden="true" style="position:absolute; left:-9999px; top:-9999px;">
+    <label for="website">Leave this empty</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div id="demo-form-error" class="hidden text-sm text-red-600" role="alert"></div>
+
+  <button
+    type="submit"
+    id="demo-form-submit"
+    class="inline-flex w-full items-center justify-center rounded-md bg-zinc-950 px-5 py-3 text-base font-medium text-white shadow-sm hover:bg-zinc-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+  >
+    Request demo
+  </button>
+
+  <p class="text-xs text-zinc-500 text-center">
+    We'll reply within one business day. No drip campaigns, no sales pressure.
+  </p>
+</form>
+
+<div id="demo-form-success" class="hidden rounded-xl border border-emerald-200 bg-emerald-50 p-6">
+  <div class="flex items-start gap-3">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 text-emerald-600" aria-hidden="true">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <div>
+      <h3 class="font-semibold text-zinc-950">Thanks. We'll be in touch.</h3>
+      <p class="mt-1 text-zinc-700">A reply with a few walkthrough times will land in your inbox within one business day.</p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById('demo-form');
+    const success = document.getElementById('demo-form-success');
+    const errorBox = document.getElementById('demo-form-error');
+    const button = document.getElementById('demo-form-submit');
+    if (!form || !success || !errorBox || !button) return;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      errorBox.classList.add('hidden');
+      errorBox.textContent = '';
+      button.disabled = true;
+      const originalLabel = button.textContent;
+      button.textContent = 'Sending…';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch('/api/demo', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      } catch (err) {
+        console.error(err);
+        errorBox.textContent =
+          'Something went wrong. Please email us directly at hello@loop.com.';
+        errorBox.classList.remove('hidden');
+        button.disabled = false;
+        button.textContent = originalLabel;
+      }
+    });
+  })();
+</script>

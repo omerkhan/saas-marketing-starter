@@ -1,0 +1,32 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-zinc-200 bg-white">
+  <div class="mx-auto max-w-6xl px-6 py-10">
+    <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#0a0a0a" />
+          <path
+            d="M10 11.5a5.5 5.5 0 1 0 11 0v9a5.5 5.5 0 1 1-11 0"
+            stroke="white"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            fill="none"
+          />
+        </svg>
+        <span class="text-sm text-zinc-600">
+          © {year} Loop, Inc.
+        </span>
+      </div>
+
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Footer">
+        <a href="/pricing" class="text-sm text-zinc-600 hover:text-zinc-950 transition-colors">Pricing</a>
+        <a href="/about" class="text-sm text-zinc-600 hover:text-zinc-950 transition-colors">About</a>
+        <a href="/demo" class="text-sm text-zinc-600 hover:text-zinc-950 transition-colors">Request a demo</a>
+        <a href="/privacy" class="text-sm text-zinc-600 hover:text-zinc-950 transition-colors">Privacy</a>
+        <a href="/terms" class="text-sm text-zinc-600 hover:text-zinc-950 transition-colors">Terms</a>
+      </nav>
+    </div>
+  </div>
+</footer>

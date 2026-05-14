@@ -1,0 +1,77 @@
+---
+interface Item {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  heading?: string;
+  items?: Item[];
+}
+
+const {
+  heading = 'Pricing questions',
+  items = [
+    {
+      q: 'Is there a free trial?',
+      a: 'Yes. Every plan starts with a 14-day free trial. No credit card required, and we will not auto-charge you when it ends.',
+    },
+    {
+      q: 'Can I change plans later?',
+      a: 'Anytime. Upgrades take effect immediately and we prorate the charge. Downgrades take effect at the start of your next billing cycle.',
+    },
+    {
+      q: 'Do you offer annual pricing?',
+      a: 'Yes. Annual billing saves you 20%. Toggle annual on the checkout page, or contact us if you have already started a monthly plan.',
+    },
+    {
+      q: 'What happens if a teammate leaves?',
+      a: 'Remove them from your workspace and we will prorate the unused portion of their seat as a credit on your next invoice.',
+    },
+    {
+      q: 'Do you have a discount for startups or non-profits?',
+      a: 'We offer 50% off Growth for pre-seed startups (under 10 people, under $1M raised) and 30% off for registered non-profits. Email us with proof and we will sort it.',
+    },
+  ],
+} = Astro.props;
+---
+<section class="bg-zinc-50">
+  <div class="mx-auto max-w-3xl px-6 py-20 md:py-24">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-950 text-center">{heading}</h2>
+    <div class="mt-12 divide-y divide-zinc-200 border-y border-zinc-200">
+      {
+        items.map((item) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer items-center justify-between text-left">
+              <span class="text-base md:text-lg font-medium text-zinc-950 pr-8">{item.q}</span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="flex-shrink-0 text-zinc-500 transition-transform group-open:rotate-180"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-zinc-600 leading-relaxed">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

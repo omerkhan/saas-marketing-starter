@@ -1,0 +1,36 @@
+---
+interface Props {
+  heading: string;
+  description: string;
+  bullets?: string[];
+  bulletsSide?: 'left' | 'right';
+}
+
+const { heading, description, bullets = [], bulletsSide = 'right' } = Astro.props;
+
+const textOrder = bulletsSide === 'right' ? 'md:order-1' : 'md:order-2';
+const bulletsOrder = bulletsSide === 'right' ? 'md:order-2' : 'md:order-1';
+---
+<section class="bg-white">
+  <div class="mx-auto max-w-6xl px-6 py-20 md:py-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+      <div class={textOrder}>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-950">{heading}</h2>
+        <p class="mt-4 text-lg text-zinc-600 leading-relaxed">{description}</p>
+      </div>
+
+      {
+        bullets.length > 0 && (
+          <ul class={`space-y-3 md:pt-2 ${bulletsOrder}`}>
+            {bullets.map((bullet) => (
+              <li class="flex items-start gap-3 text-zinc-700 leading-relaxed">
+                <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-zinc-400" aria-hidden="true"></span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</section>

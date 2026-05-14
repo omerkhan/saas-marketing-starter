@@ -1,0 +1,39 @@
+---
+interface Props {
+  headline?: string;
+  subhead?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}
+
+const {
+  headline = 'Standups without the meetings.',
+  subhead = 'Replace the daily standup with a 2-minute write-up your team can read on their own time. Mornings get quiet again.',
+  primaryCta = { label: 'Start 14-day free trial', href: '#' },
+  secondaryCta = { label: 'Request a demo', href: '/demo' },
+} = Astro.props;
+---
+<section class="bg-white">
+  <div class="mx-auto flex max-w-4xl min-h-[80vh] flex-col justify-center px-6 py-20 text-center">
+    <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-zinc-950 leading-[1.02]">
+      {headline}
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-zinc-600 leading-relaxed max-w-2xl mx-auto">
+      {subhead}
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center items-center gap-4">
+      <a
+        href={primaryCta.href}
+        class="inline-flex items-center rounded-md bg-zinc-950 px-5 py-3 text-base font-medium text-white shadow-sm hover:bg-zinc-800 transition-colors"
+      >
+        {primaryCta.label}
+      </a>
+      <a
+        href={secondaryCta.href}
+        class="inline-flex items-center text-base font-medium text-zinc-950 hover:text-zinc-600 transition-colors"
+      >
+        {secondaryCta.label} <span aria-hidden="true" class="ml-1">→</span>
+      </a>
+    </div>
+  </div>
+</section>

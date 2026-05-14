@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+---
+<BaseLayout
+  title="Pricing — Loop"
+  description="Simple per-seat pricing. Start with a 14-day free trial, no credit card required."
+>
+  <section class="bg-white">
+    <div class="mx-auto max-w-3xl px-6 pt-16 pb-8 md:pt-20 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-zinc-950">
+        Simple pricing that scales with your team.
+      </h1>
+      <p class="mt-4 text-lg text-zinc-600">
+        Every plan includes the full Loop product. Pick the size that fits your team today; switch anytime.
+      </p>
+    </div>
+  </section>
+
+  <PricingTable />
+
+  <FAQ />
+
+  <CTA
+    heading="Try it before you decide."
+    subhead="14 days, the full product, no credit card."
+    cta={{ label: 'Start free trial', href: '#' }}
+  />
+</BaseLayout>

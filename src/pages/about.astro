@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+
+const team = [
+  {
+    name: 'Maya Chen',
+    title: 'Co-founder & CEO',
+    bio: 'Former engineering manager at Stripe. Once ran the same standup for 18 months before realizing nobody enjoyed it.',
+    initials: 'MC',
+  },
+  {
+    name: 'Tomás Ribeiro',
+    title: 'Co-founder & CTO',
+    bio: 'Built developer tools at GitHub. Believes the best meeting is the one that did not need to happen.',
+    initials: 'TR',
+  },
+  {
+    name: 'Ada Okonkwo',
+    title: 'Head of Product',
+    bio: 'Led product at two remote-first startups. Spent years writing the workflow she wishes Loop had existed for.',
+    initials: 'AO',
+  },
+];
+---
+<BaseLayout
+  title="About — Loop"
+  description="We are building the future of async work, one quiet morning at a time."
+>
+  <section class="bg-white">
+    <div class="mx-auto max-w-3xl px-6 pt-16 pb-12 md:pt-20">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-zinc-950">
+        Loop exists because we were tired of our own standup.
+      </h1>
+      <div class="mt-8 space-y-5 text-lg text-zinc-700 leading-relaxed">
+        <p>
+          At our last company, the daily standup was 20 minutes of "I'm doing this, I'll do that."
+          Most of it the listeners didn't need. The parts they did need, they forgot by lunch.
+          The meeting kept happening because nobody had a better idea, not because anyone liked it.
+        </p>
+        <p>
+          So we built one. In Loop, updates happen on each person's schedule. The information
+          lands in Slack where the team already pays attention. Blockers surface to the people who
+          can actually unblock them, without a manager playing detective. Mornings go back to
+          being mornings.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-zinc-50">
+    <div class="mx-auto max-w-6xl px-6 py-20 md:py-24">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-zinc-950">The team</h2>
+      <p class="mt-3 text-lg text-zinc-600 max-w-2xl">
+        A small, senior team building the tool we wish we'd had at our last jobs.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          team.map((person) => (
+            <div class="rounded-xl border border-zinc-200 bg-white p-6">
+              <div class="h-16 w-16 rounded-full bg-zinc-100 flex items-center justify-center text-lg font-semibold text-zinc-700">
+                {person.initials}
+              </div>
+              <h3 class="mt-4 text-lg font-semibold text-zinc-950">{person.name}</h3>
+              <p class="text-sm text-zinc-600">{person.title}</p>
+              <p class="mt-3 text-zinc-700 leading-relaxed">{person.bio}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    heading="Want to see Loop in your workflow?"
+    subhead="A 20-minute walkthrough, tailored to your team."
+    cta={{ label: 'Request a demo', href: '/demo' }}
+    secondaryCta={null}
+  />
+</BaseLayout>
