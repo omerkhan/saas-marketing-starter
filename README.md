@@ -4,17 +4,13 @@ A marketing site for B2B SaaS founders, with home, pricing, about, and a working
 
 ## Quickstart (5 minutes)
 
-### 1. Create your copy of this repo
-
-Click the green **"Use this template"** button at the top of this page → **"Create a new repository"**. Give it a name like `my-saas-site` and click **Create repository**.
-
-### 2. Deploy to Vercel
+### 1. Deploy Your Copy to Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/omerkhan/saas-marketing-starter)
 
 Click the button above. Vercel will ask you to sign in with GitHub (free), pick your new repo, and click **Deploy**. In about 60 seconds, your site is live at a `*.vercel.app` URL.
 
-### 3. Edit with Claude Code on the web
+### 2. Edit with Claude Code on the web
 
 1. Go to [claude.ai/code](https://claude.ai/code) (requires Claude Pro or Max).
 2. Connect your GitHub account (one time).
